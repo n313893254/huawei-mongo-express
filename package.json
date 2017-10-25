@@ -1,22 +1,21 @@
 {
-  "name": "huawei-mongo-express",
+  "author": "DoubleSheep",
+  "name": "mongo-express",
+  "description": "Web-based admin interface for MongoDB",
   "version": "1.0.0",
-  "description": "Web-based MongoDB admin interface, written with Node.js and express",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://n313893254:1029509060git@github.com/n313893254/huawei-mongo-express.git"
+    "url": "https://github.com/n313893254/huawei-mongo-express.git"
   },
-  "author": "DoubleSheep",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/n313893254/huawei-mongo-express/issues"
-  },
-  "homepage": "https://github.com/n313893254/huawei-mongo-express#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "3.0.x",
+    "connect-mongodb": "1.1.x",
+    "swig": "0.11.x",
+    "consolidate": "0.3.x"
+  },
+  "engine": "node >= 0.6",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app"
   }
 }
