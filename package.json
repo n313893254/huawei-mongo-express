@@ -8,10 +8,11 @@
     "url": "https://github.com/n313893254/huawei-mongo-express.git"
   },
   "dependencies": {
-    "express": "3.0.x",
     "connect-mongodb": "1.1.x",
-    "swig": "0.11.x",
-    "consolidate": "0.3.x"
+    "consolidate": "0.3.x",
+    "express": "3.0.x",
+    "mongodb": "^2.2.33",
+    "swig": "0.11.x"
   },
   "engine": "node >= 0.6",
   "license": "MIT",
