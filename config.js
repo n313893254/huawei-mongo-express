@@ -6,5 +6,9 @@ module.exports = {
   },
   site: {
     base_url: 'http://localhost:3000/'
+  },
+  options: {
+    cmd_type: 'eval',
+    subprocess_timeout: 300
   }
 }
