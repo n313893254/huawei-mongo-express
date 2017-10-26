@@ -51,18 +51,24 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+// app.locals.use(function (req, res) {
+//   res.locals.base_href = config.site.base_url
+// })
+
 db.open(function(err, db) {
   if (!err) {
     app.set('db', db)
     console.log('Database connnected!')
+
+    db.collectionNames(function (err, names) {
+      // res.locals.collections = names
+    })
   } else {
-    console.log(err)
+    throw err
   }
 })
 
-// app.locals.use(function (req, res) {
-//   res.locals.base_href = config.site.base_url
-// })
+
 
 app.get('/', routes.index);
 
