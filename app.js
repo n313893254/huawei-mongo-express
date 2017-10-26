@@ -51,6 +51,10 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+// app.locals.use(function (req, res) {
+//   res.locals.base_href = config.base_url
+// })
+
 db.open(function(err, db) {
   if (!err) {
     app.set('db', db)

@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <base href="{{base_href}}">
     <meta charset="utf-8">
     <title>{% block title %}Index{% endblock %} - Mongo Express</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap-responsive.css">
   </head>
   <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a href="#" class="brand">Mongo Express</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Command Line</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
     {% block content %}{% endblock %}
   </body>
 </html>
