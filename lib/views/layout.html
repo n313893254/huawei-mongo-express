@@ -16,6 +16,25 @@
     body {
       padding-top: 60px;
       padding-bottom: 40px;
+      display: flex;
+      justify-content: flex-start;
+    }
+    #nav {
+      margin-left: 0;
+      margin-bottom: 0;
+    }
+    #left-menu {
+      width: 10vw;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      border: 1px solid #e7e7e7;
+      background-color: #f8f8f8;
+      position: fixed;
+      height: 100vh;
+    }
+    #right-content {
+
     }
     .sidebar-nav {
       padding: 9px 0;
@@ -37,7 +56,7 @@
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
+  <div class="container" id="nav">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -50,7 +69,7 @@
           <img src="{{ baseHref }}public/img/mongo-express-logo.png" />
         </a>
       </div>
-      <a class="navbar-brand" href="">Mongo Express</a>
+      <a class="navbar-brand" href="">MongoDB 控制台</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -61,8 +80,20 @@
   </div>
 </nav>
 
+<div class="container" id="left-menu">
+  <div class="navbar-brand">
+    <a class="">
+      服务实例
+    </a>
+  </div>
+  <div class="navbar-brand">
+    <a class="">
+      菜单1
+    </a>
+  </div>
+</div>
 
-<div class="container">
+<div class="container" id="right-content">
   <div class="row">
     <div class="col-md-12">
       <div class="page-header main-title">
