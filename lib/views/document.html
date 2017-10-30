@@ -25,7 +25,7 @@
 
 {% block breadcrumb %}
   <li>
-    <a href="{{ baseHref }}db/{{ dbName}}">Database:</a>
+    <a href="{{ baseHref }}db/{{ dbName}}">数据库:</a>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ dbName }}<span class="caret"></span></a>
@@ -39,7 +39,7 @@
     <a href="{{ baseHref }}db/{{ dbName}}"><span class="glyphicon glyphicon-chevron-right"></span></a>
   </li>
   <li>
-    <a href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}">Collection:</a>
+    <a href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}">集合:</a>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ collectionName }}<span class="caret"></span></a>
@@ -54,7 +54,7 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </li>
-  <li><a>Document {{ document._id|to_string }}</a></li>
+  <li><a>文档: {{ document._id|to_string }}</a></li>
 {% endblock %}
 
 {% block content %}
@@ -63,27 +63,27 @@
   id="documentEditForm"
   action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}/{{ document._id | json | safe | url_encode }}"
 >
-  {% if docLength > 10 %}
+  <!-- {% if docLength > 10 %}
     <div>
       {% if !settings.read_only %}
         <input type="hidden" name="_method" value="put">
         <button onclick="return onBackClick()" class="backButton btn btn-warning btn-large">
          <span class="glyphicon glyphicon-arrow-left"></span>
-          Back
+          返回
         </button>
         <button type="submit" class="btn btn-success btn-large pull-right" onclick="return onSubmitClick()">
           <span class="glyphicon glyphicon-pencil"></span>
-          Save
+          保存
         </button>
       {% else %}
         <button onclick="return history.back()" class="btn btn-warning btn-large btn-block">
          <span class="glyphicon glyphicon-arrow-left"></span>
-          Back
+          返回
         </button>
       {% endif %}
     </div>
   <br />
-  {% endif %}
+  {% endif %} -->
 
   <textarea class="col-md-12" id="document" name="document"{% if settings.read_only %} readonly="readonly"{% endif %}>{{ docString }}</textarea>
   <br />
@@ -93,17 +93,17 @@
       <input type="hidden" name="_method" value="put">
       <button onclick="return onBackClick()" class="backButton btn btn-warning btn-large">
        <span class="glyphicon glyphicon-arrow-left"></span>
-        Back
+        返回
       </button>
 
       <button type="submit" class="btn btn-success btn-large pull-right" onclick="return onSubmitClick()">
         <span class="glyphicon glyphicon-pencil"></span>
-        Save
+        保存
       </button>
     {% else %}
       <button onclick="return history.back()" class="btn btn-warning btn-large btn-block">
        <span class="glyphicon glyphicon-arrow-left"></span>
-        Back
+        返回
       </button>
     {% endif %}
   </div>
@@ -115,7 +115,7 @@
     <input type="hidden" name="_method" value="delete">
     <button type="submit" class="btn btn-danger">
       <span class="glyphicon glyphicon-trash"></span>
-      Delete
+      删除
     </button>
   </form>
 {% endif %}

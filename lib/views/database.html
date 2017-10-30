@@ -41,20 +41,20 @@
     <table class="table table-bordered table-striped table-condensed no-margin">
       {% for c in colls %}
       <tr>
-        <td><h3><a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}">{{ c }}</a></h3></td>
-        <td class="col-md-2">
+        <td><a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}">{{ c }}</a></td>
+        <td class="col-md-1">
           <a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}" class="btn btn-success btn-block">
-            <span class="glyphicon glyphicon-eye-open"></span><br>查看
+            查看
           </a>
         </td>
         <td class="col-md-1">
           <a href="{{ baseHref }}db/{{ dbName }}/export/{{ c | url_encode }}" class="btn btn-warning btn-block">
-            <span class="glyphicon glyphicon-floppy-save"></span><br>导出
+            导出
           </a>
         </td>
         <td class="col-md-1">
           <a href="{{ baseHref }}db/{{ dbName }}/expArr/{{ c | url_encode }}" class="btn btn-warning btn-block">
-            <span class="glyphicon glyphicon-floppy-save"></span><br>导出[JSON]
+            导出[JSON]
           </a>
         </td>
         {% if !settings.read_only %}
@@ -68,7 +68,7 @@
             <button type="submit" class="hidden"></button>
           </form>
           <button class="btn btn-danger btn-block deleteButton" collection-name="{{ c }}" childof="db-{{ dbName }}-{{ c }}">
-            <span class="glyphicon glyphicon-trash"></span><br>删除
+            删除
           </button>
         </td>
         {% endif %}
@@ -219,7 +219,7 @@
     {% endif %}
     {% if stats.dataFileVersion %}
       <tr>
-      <td><strong>Data File Version</strong></td>
+      <td><strong>数据文件版本</strong></td>
       <td>{{ stats.dataFileVersion }}</td>
       </tr>
     {% endif %}

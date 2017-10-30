@@ -267,15 +267,15 @@
         <tr onclick="loadDocument('{{ document._id | json | safe | url_encode }}')">
           {% for column in columns %}
             <td><div class="tableContent">
-              {% if !settings.read_only && column === '_id' && collectionName !== 'system.indexes' %}
-                <form class="deleteButtonDocument" method="POST" style="display:inline;" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}/{{ document._id | json | safe | url_encode }}?skip={{ skip }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection= {{ projection }}">
-                <input type="hidden" name="_method" value="delete">
-                <button type="submit" class="btn btn-danger">
-                <span class="glyphicon glyphicon-trash"></span>
-                </button>
-                </form>
-              {% endif %}
             {{ document[column] | stringDocIDs | to_display | safe }}
+            {% if !settings.read_only && column === '_id' && collectionName !== 'system.indexes' %}
+              <form class="deleteButtonDocument" method="POST" style="display:inline;" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}/{{ document._id | json | safe | url_encode }}?skip={{ skip }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection= {{ projection }}">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="btn btn-danger">
+              <span class="glyphicon glyphicon-trash"></span>
+              </button>
+              </form>
+            {% endif %}
             </div></td>
           {% endfor %}
         </tr>
@@ -322,7 +322,7 @@
   <div class="row">
     {% if !settings.read_only %}
       <div class="col-md-12">
-        <h2>重命名文档</h2>
+        <h2>重命名集合</h2>
         <form method="POST" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}" class="well form-inline">
           <input type="hidden" name="_method" value="put">
           <div class="form-group">
@@ -548,7 +548,7 @@
       {% if !settings.read_only %}
         <td>
           <a class="btn btn-danger" href="{{ baseHref }}db/{{ dbName }}/dropIndex/{{ collectionName | url_encode }}?name={{ index.name }}">
-            <span class="glyphicon glyphicon-trash"></span> &nbsp;DEL
+            <span class="glyphicon glyphicon-trash"></span> &nbsp;删除
           </a>
         </td>
       {% else %}
