@@ -47,7 +47,7 @@
 
 {% block breadcrumb %}
   <li>
-    <a href="{{ baseHref }}db/{{ dbName}}">Database:</a>
+    <a href="{{ baseHref }}db/{{ dbName}}">数据库:</a>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ dbName }}<span class="caret"></span></a>
@@ -61,7 +61,7 @@
     <a href="{{ baseHref }}db/{{ dbName}}"><span class="glyphicon glyphicon-chevron-right"></span></a>
   </li>
   <li>
-    <a href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}">Collection:</a>
+    <a href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}">集合:</a>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ collectionName }}<span class="caret"></span></a>
@@ -78,18 +78,18 @@
     <p>
       <button type="button" data-toggle="modal" data-target="#addDocument" class="btn btn-success btn-large">
         <span class="glyphicon glyphicon-pencil"></span>
-        New Document
+        创建文档
       </button>
       <button type="button" data-toggle="modal" data-target="#addIndex" class="btn btn-success btn-large">
         <span class="glyphicon glyphicon-pencil"></span>
-        New Index
+        添加索引
       </button>
     </p>
   {% endif %}
 
   <ul id="tabs" class="nav nav-pills nav-justified" data-tabs="tabs">
-    <li class="active"><a href="#simple" data-toggle="tab"><span class="glyphicon glyphicon-tag"></span>  Simple</a></li>
-    <li><a href="#advanced" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span>  Advanced</a></li>
+    <li class="active"><a href="#simple" data-toggle="tab"><span class="glyphicon glyphicon-tag"></span>简单查询</a></li>
+    <li><a href="#advanced" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span>高级查询</a></li>
   </ul>
   <div id="my-tab-content" class="tab-content">
     <div class="tab-pane active" id="simple">
@@ -99,24 +99,24 @@
         {% endfor %}
       <div class="row">
         <div class="form-group col-sm-6 col-md-4">
-          <input style="width:100%;" class="input-medium form-control" type="text" id="key" name="key" placeholder="Key" title="Key" value="{{ key }}">
+          <input style="width:100%;" class="input-medium form-control" type="text" id="key" name="key" placeholder="键" title="Key" value="{{ key }}">
         </div>
         <div class="form-group col-sm-6 col-md-4">
-          <input style="width:100%;" class="input-medium form-control" type="text" id="value" name="value" placeholder="Value" title="Value" value="{{ value }}">
+          <input style="width:100%;" class="input-medium form-control" type="text" id="value" name="value" placeholder="值" title="Value" value="{{ value }}">
         </div>
         <div class="form-group col-sm-6 col-md-2">
           <select name="type" class="form-control">
-            <option value="S" {% if type == 'S' %}selected {% endif %}>String</option>
-            <option value="R" {% if type == 'R' %}selected {% endif %}>Regex</option>
-            <option value="J" {% if type == 'J' %}selected {% endif %}>JSON, bool</option>
-            <option value="N" {% if type == 'N' %}selected {% endif %}>Number</option>
-            <option value="O" {% if type == 'O' %}selected {% endif %}>ObjectID</option>
+            <option value="S" {% if type == 'S' %}selected {% endif %}>字符串</option>
+            <option value="R" {% if type == 'R' %}selected {% endif %}>正则</option>
+            <option value="J" {% if type == 'J' %}selected {% endif %}>JSON, 布尔</option>
+            <option value="N" {% if type == 'N' %}selected {% endif %}>数字</option>
+            <option value="O" {% if type == 'O' %}selected {% endif %}>对象ID</option>
           </select>
         </div>
         <div class="form-group col-sm-6 col-md-2">
           <button type="submit" class="btn btn-primary btn-block">
             <span class="glyphicon glyphicon-search"></span>
-            Find
+            查询
           </button>
         </div>
       </div>
@@ -129,7 +129,7 @@
         {% endfor %}
         <div class="row">
           <div class="form-group col-sm-6 col-md-5">
-            <textarea class="input-medium form-control" style="width: 100%; height: 150px" id="query" name="query" placeholder="Query" title="Query">{{ query }}</textarea>
+            <textarea class="input-medium form-control" style="width: 100%; height: 150px" id="query" name="query" placeholder="查询" title="Query">{{ query }}</textarea>
           </div>
           <div class="form-group col-sm-6 col-md-5">
             <textarea class="input-medium form-control" style="width: 100%; height: 150px" id="projection" name="projection" placeholder="Projection" title="Projection">{{ projection }}</textarea>
@@ -137,7 +137,7 @@
           <div class="form-group col-md-2">
             <button style="height:150px;" type="submit" class="btn btn-primary btn-block">
               <span class="glyphicon glyphicon-search"></span>
-            Find
+            查询
             </button>
           </div>
         </div>
@@ -151,7 +151,7 @@
       <input type="hidden" name="_method" value="delete">
       <button type="button" data-toggle="modal" data-target="#deleteListModal" class="btn btn-danger btn-large btn-block">
         <span class="glyphicon glyphicon-trash"></span>
-        Delete all {{count}} documents retrieved
+        删除 {{count}} documents retrieved
       </button>
     </form>
   </p>
@@ -166,7 +166,7 @@
 
       <div class="modal-header">
         <button class="close" data-dismiss="modal">×</button>
-        <h2>Add Document</h2>
+        <h2>创建文档</h2>
       </div>
       <div class="modal-body" id = "document-modal-body">
         <textarea id="document" name="document">{
@@ -175,10 +175,10 @@
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-error" data-dismiss="modal">Close</button>
+        <button class="btn btn-error" data-dismiss="modal">取消</button>
         <button type="submit" class="btn btn-success" onclick="return checkValidJSON()">
           <span class="glyphicon glyphicon-pencil"></span>
-          Save
+          创建
         </button>
       </div>
 
@@ -196,11 +196,11 @@
 
       <div class="modal-header">
         <button class="close" data-dismiss="modal">×</button>
-        <h2>Add Indexs</h2>
-        <span>
+        <h2>添加索引</h2>
+        <!-- <span>
           A document that contains the field and value pairs where the field
           is the index key. 1 for an ascending and -1 for a descending index.
-        </span>
+        </span> -->
       </div>
       <div class="modal-body" id = "index-modal-body">
         <textarea id="index" name="index">{
@@ -208,10 +208,10 @@
 }</textarea>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-error" data-dismiss="modal">Close</button>
+        <button class="btn btn-error" data-dismiss="modal">取消</button>
         <button type="submit" class="btn btn-success" onclick="return checkValidIndexJSON()">
              <span class="glyphicon glyphicon-pencil"></span>
-          Save
+          添加
         </button>
       </div>
 
@@ -224,7 +224,7 @@
 
   {% if documents.length == 0 %}
     <p class="well">
-      No documents found.
+      没有符合条件的文档
     </p>
   {% else %}
 
@@ -322,7 +322,7 @@
   <div class="row">
     {% if !settings.read_only %}
       <div class="col-md-12">
-        <h2>Rename Collection</h2>
+        <h2>重命名文档</h2>
         <form method="POST" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}" class="well form-inline">
           <input type="hidden" name="_method" value="put">
           <div class="form-group">
@@ -331,19 +331,19 @@
           </div>
           <button type="submit" class="btn btn-primary">
             <span class="glyphicon glyphicon-pencil"></span>
-            Rename
+            重命名
           </button>
         </form>
       </div>
     {% endif %}
 
   </div>
-  <h2>Tools</h2>
+  <h2>工具</h2>
   <div class="row">
     <div class="col-sm-6 {% if !settings.read_only %}col-lg-3{% endif %}">
       <div class="well">
       <a href="{{ baseHref }}db/{{ dbName }}/export/{{ collectionName | url_encode }}" class="btn btn-warning btn-block">
-        <span class="glyphicon glyphicon-floppy-save"></span><br>Export Standard
+        <span class="glyphicon glyphicon-floppy-save"></span><br>导出 标准格式
       </a>
       </div>
     </div>
@@ -351,7 +351,7 @@
     <div class="col-sm-6 {% if !settings.read_only %}col-lg-3{% endif %}">
       <div class="well">
       <a href="{{ baseHref }}db/{{ dbName }}/expArr/{{ collectionName | url_encode }}" class="btn btn-warning btn-block">
-        <span class="glyphicon glyphicon-floppy-save"></span><br>Export --jsonArray
+        <span class="glyphicon glyphicon-floppy-save"></span><br>导出 jsonArray格式
       </a>
       </div>
     </div>
@@ -359,7 +359,7 @@
     <div class="col-sm-6 {% if !settings.read_only %}col-lg-3{% endif %}">
       <div class="well">
       <a href="{{ baseHref }}db/{{ dbName }}/expCsv/{{ collectionName | url_encode }}" class="btn btn-warning btn-block">
-        <span class="glyphicon glyphicon-floppy-save"></span><br>Export --csv
+        <span class="glyphicon glyphicon-floppy-save"></span><br>导出 csv格式
       </a>
       </div>
     </div>
@@ -367,7 +367,7 @@
     <div class="col-sm-6 {% if !settings.read_only %}col-lg-3{% endif %}">
       <div class="well">
       <a href="{{ baseHref }}db/{{ dbName }}/reIndex/{{ collectionName | url_encode }}" class="btn btn-warning btn-block">
-        <span class="glyphicon glyphicon-resize-small"></span><br>Reindex
+        <span class="glyphicon glyphicon-resize-small"></span><br>重新索引
       </a>
       </div>
     </div>
@@ -376,7 +376,7 @@
       <div class="col-sm-6 col-lg-3">
         <div class="well">
           <a href="{{ baseHref }}db/{{ dbName }}/compact/{{ collectionName | url_encode }}" class="btn btn-danger btn-block">
-            <span class="glyphicon glyphicon-resize-small"></span><br>Compact
+            <span class="glyphicon glyphicon-resize-small"></span><br>压缩
           </a>
         </div>
       </div>
@@ -385,7 +385,7 @@
           <input type="hidden" name="_method" value="delete">
           <input type="submit" class="hidden" />
           <button class="btn btn-danger deleteButtonCollection btn-block" collection-name="{{ collectionName }}" childof="db-{{ dbName }}-{{ collectionName }}">
-            <span class="glyphicon glyphicon-trash"></span><br>Delete
+            <span class="glyphicon glyphicon-trash"></span><br>删除
           </button>
         </form>
 
@@ -395,11 +395,11 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
-              Are you sure?
+              确定?
             </div>
             <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-danger" id="delete">Delete</button>
-              <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+              <button type="button" data-dismiss="modal" class="btn btn-danger" id="delete">删除</button>
+              <button type="button" data-dismiss="modal" class="btn">取消</button>
             </div>
           </div>
         </div>
@@ -412,8 +412,8 @@
               Are you sure you want to delete all {{count}} documents?
             </div>
             <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-danger" id="deleteListConfirmButton">Delete</button>
-              <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+              <button type="button" data-dismiss="modal" class="btn btn-danger" id="deleteListConfirmButton">删除</button>
+              <button type="button" data-dismiss="modal" class="btn">取消</button>
             </div>
           </div>
         </div>
@@ -425,14 +425,14 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Delete collection</h4>
+              <h4 class="modal-title" id="myModalLabel">删除集合</h4>
             </div>
             <div class="modal-body">
               <p>
-                Be careful! You are about to delete whole <strong><span id="modal-collection-name"></span></strong> collection.
+                注意！你将要删除整个 <strong><span id="modal-collection-name"></span></strong> 集合.
               </p>
               <p>
-                <label for="confirmation-input">Type the collection name to proceed.</label>
+                <label for="confirmation-input">请输入你要删除集合的名称</label>
                 <input type="text" id="confirmation-input" name="confirmation-input" shouldbe="" value="" />
               </p>
             </div>
@@ -448,11 +448,11 @@
     {% endif %}
 
   <div class="stats col-md-12">
-    <h2>Collection Stats</h2>
+    <h2>集合状态</h2>
     <table class="table table-bordered table-striped">
       <tr>
         <td>
-          <strong>Documents</strong>
+          <strong>文档数</strong>
         </td>
         <td>
           {{ stats.count }}
@@ -460,7 +460,7 @@
       </tr>
       <tr>
         <td>
-          <strong>Total doc size</strong>
+          <strong>总文档大小</strong>
         </td>
         <td>
           {{ stats.size|convertBytes }}
@@ -468,7 +468,7 @@
       </tr>
       <tr>
         <td>
-          <strong>Average doc size</strong>
+          <strong>平均文档大小</strong>
         </td>
         <td>
           {{ stats.avgObjSize|convertBytes }}
@@ -484,7 +484,7 @@
       </tr>
       <tr>
         <td>
-          <strong>Indexes</strong>
+          <strong>索引数</strong>
         </td>
         <td>
           {{ stats.nindexes }}
@@ -492,7 +492,7 @@
       </tr>
       <tr>
         <td>
-          <strong>Total index size</strong>
+          <strong>总索引大小</strong>
         </td>
         <td>
           {{ stats.totalIndexSize|convertBytes }}
@@ -518,14 +518,14 @@
   </div>
 
   <div class="col-md-12">
-    <h2>Indexes</h2>
+    <h2>索引</h2>
     <table id="indexes" class="table table-bordered table-striped">
       <tr>
-        <th>Name</th>
+        <th>名称</th>
         <th>Columns</th>
-        <th>Size</th>
-        <th>Attributes</th>
-        <th>Actions</th>
+        <th>大小</th>
+        <th>属性</th>
+        <th>操作</th>
       </tr>
     {% for index in indexes %}
       <tr>

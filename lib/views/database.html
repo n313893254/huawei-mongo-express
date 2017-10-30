@@ -4,7 +4,7 @@
 
 {% block breadcrumb %}
   <li>
-    <a href="{{ baseHref }}db/{{ dbName}}">Database:</a>
+    <a href="{{ baseHref }}db/{{ dbName}}">数据库:</a>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ dbName }}<span class="caret"></span></a>
@@ -41,6 +41,7 @@
     <table class="table table-bordered table-striped table-condensed no-margin">
       {% for c in colls %}
       <tr>
+        <td><h3><a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}">{{ c }}</a></h3></td>
         <td class="col-md-2">
           <a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}" class="btn btn-success btn-block">
             <span class="glyphicon glyphicon-eye-open"></span><br>查看
@@ -56,7 +57,6 @@
             <span class="glyphicon glyphicon-floppy-save"></span><br>导出[JSON]
           </a>
         </td>
-        <td><h3><a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}">{{ c }}</a></h3></td>
         {% if !settings.read_only %}
         <td class="col-md-1">
           <form method="POST"

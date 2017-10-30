@@ -38,12 +38,12 @@
 <table class="table table-bordered table-striped table-condensed no-margin">
   {% for db in databases %}
   <tr>
+    <td><h3><a href="{{ baseHref }}db/{{ db }}/">{{ db }}</a></h3></td>
     <td class="col-md-2">
       <a href="{{ baseHref }}db/{{ db }}/" class="btn btn-success btn-block" >
         <span class="glyphicon glyphicon-eye-open"></span><br>查看
       </a>
     </td>
-    <td><h3><a href="{{ baseHref }}db/{{ db }}/">{{ db }}</a></h3></td>
     {% if !settings.read_only %}
     <td class="col-md-2">
       <form method="POST" id="db-{{ db }}" action="{{ baseHref }}{{ db }}" style="margin: 0px;">
