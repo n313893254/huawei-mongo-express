@@ -1,10 +1,10 @@
 {% extends 'layout.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}主页{% endblock %}
 
 {% block breadcrumb %}
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Database<span class="caret"></span></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">数据库<span class="caret"></span></a>
     <ul class="dropdown-menu">
       {% for db in databases %}
       <li><a href="{{ baseHref }}db/{{ db }}/">{{ db }}</a></li>
@@ -18,7 +18,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div style="display: inline-block;">
-      <h4 style="font-weight: bold;">Databases</h4>
+      <h4 style="font-weight: bold;">数据库</h4>
     </div>
     {% if !settings.read_only %}
     <form class="form-inline" method="POST" style="float:right;">
@@ -27,7 +27,7 @@
         <span class="input-group-btn">
       <button type="submit" class="btn btn-primary pull-right">
         <span class="glyphicon glyphicon-plus"></span>
-        Create Database
+        创建数据库
       </button>
         </span>
       </div>
