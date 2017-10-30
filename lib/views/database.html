@@ -20,16 +20,16 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div style="display: inline-block;">
-    <h4 style="font-weight: bold;">Collections</h4>
+    <h4 style="font-weight: bold;">集合</h4>
       </div>
     {% if !settings.read_only %}
         <form class="form-inline" method="POST" style="float: right;">
           <div class="input-group">
-            <input class="form-control" type="text" id="collection" name="collection" placeholder="Collection Name" title="Collection Name">
+            <input class="form-control" type="text" id="collection" name="collection" placeholder="集合名" title="集合名">
             <span class="input-group-btn">
               <button type="submit" class="btn btn-primary pull-right">
                 <span class="glyphicon glyphicon-plus"></span>
-                Create collection
+                创建集合
               </button>
             </span>
           </div><!-- /input-group -->
@@ -43,17 +43,17 @@
       <tr>
         <td class="col-md-2">
           <a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}" class="btn btn-success btn-block">
-            <span class="glyphicon glyphicon-eye-open"></span><br>View
+            <span class="glyphicon glyphicon-eye-open"></span><br>查看
           </a>
         </td>
         <td class="col-md-1">
           <a href="{{ baseHref }}db/{{ dbName }}/export/{{ c | url_encode }}" class="btn btn-warning btn-block">
-            <span class="glyphicon glyphicon-floppy-save"></span><br>Export
+            <span class="glyphicon glyphicon-floppy-save"></span><br>导出
           </a>
         </td>
         <td class="col-md-1">
           <a href="{{ baseHref }}db/{{ dbName }}/expArr/{{ c | url_encode }}" class="btn btn-warning btn-block">
-            <span class="glyphicon glyphicon-floppy-save"></span><br>[JSON]
+            <span class="glyphicon glyphicon-floppy-save"></span><br>导出[JSON]
           </a>
         </td>
         <td><h3><a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}">{{ c }}</a></h3></td>
@@ -68,7 +68,7 @@
             <button type="submit" class="hidden"></button>
           </form>
           <button class="btn btn-danger btn-block deleteButton" collection-name="{{ c }}" childof="db-{{ dbName }}-{{ c }}">
-            <span class="glyphicon glyphicon-trash"></span><br>Del
+            <span class="glyphicon glyphicon-trash"></span><br>删除
           </button>
         </td>
         {% endif %}
@@ -84,22 +84,22 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Delete collection</h4>
+        <h4 class="modal-title" id="myModalLabel">删除集合</h4>
       </div>
 
       <div class="modal-body">
         <p>
-          Be careful! You are about to delete whole <strong><span id="modal-collection-name"></span></strong> collection.
+          注意！你将要删除整个 <strong><span id="modal-collection-name"></span></strong> 集合.
         </p>
         <p>
-          <label for="confirmation-input">Type the collection name to proceed.</label>
+          <label for="confirmation-input">请输入你要删除集合的名称</label>
           <input type="text" id="confirmation-input" name="confirmation-input" shouldbe="" value="" />
         </p>
       </div>
 
       <div class="modal-footer">
-        <button type="button" data-dismiss="modal" class="btn btn-danger" id="delete">Delete</button>
-        <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+        <button type="button" data-dismiss="modal" class="btn btn-danger" id="delete">删除</button>
+        <button type="button" data-dismiss="modal" class="btn">取消</button>
       </div>
 
     </div>
@@ -160,19 +160,19 @@
 
 <div class="panel panel-default stats">
   <div class="panel-heading">
-    <h4 style="font-weight: bold;">Database Stats</h4>
+    <h4 style="font-weight: bold;">数据库状态</h4>
   </div>
   <table class="table table-bordered table-striped">
     <tr>
-      <td><strong>Collections (incl. system.namespaces)</strong></td>
+      <td><strong>集合数 (包括system.namespaces)</strong></td>
       <td>{{ stats.collections }}</td>
     </tr>
     <tr>
-      <td><strong>Data Size</strong></td>
+      <td><strong>数据大小</strong></td>
       <td>{{ stats.dataSize }}</td>
     </tr>
     <tr>
-      <td><strong>Storage Size</strong></td>
+      <td><strong>存储大小</strong></td>
       <td>{{ stats.storageSize }}</td>
     </tr>
     {% if stats.fileSize %}
@@ -183,19 +183,19 @@
     {% endif %}
     {% if stats.avgObjSize %}
       <tr>
-      <td><strong>Avg Obj Size #</strong></td>
+      <td><strong>平均对象大小</strong></td>
       <td>{{ stats.avgObjSize }}</td>
       </tr>
     {% endif %}
     {% if stats.objects %}
       <tr>
-      <td><strong>Objects #</strong></td>
+      <td><strong>对象数</strong></td>
       <td>{{ stats.objects }}</td>
       </tr>
     {% endif %}
     {% if stats.numExtents %}
       <tr>
-      <td><strong>Extents #</strong></td>
+      <td><strong>Extents</strong></td>
       <td>{{ stats.numExtents }}</td>
       </tr>
     {% endif %}
@@ -207,13 +207,13 @@
     {% endif %}
     {% if stats.indexes %}
       <tr>
-      <td><strong>Indexes #</strong></td>
+      <td><strong>索引数</strong></td>
       <td>{{ stats.indexes }}</td>
       </tr>
     {% endif %}
     {% if stats.indexSize %}
       <tr>
-      <td><strong>Index Size</strong></td>
+      <td><strong>索引大小</strong></td>
       <td>{{ stats.indexSize }}</td>
       </tr>
     {% endif %}
