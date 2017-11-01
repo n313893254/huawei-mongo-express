@@ -176,6 +176,25 @@
     <td><strong>删除总数</strong></td>
     <td>{{ info.opcounters.delete}}</td>
   </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td><strong>集群名</strong></td>
+    <td>{{ info.repl.setName }}</td>
+    <td><strong>主节点</strong></td>
+    <td>{{ info.repl.primary }}</td>
+  </tr>
+  <tr>
+    <td><strong>节点1</strong></td>
+    <td colspan="3">{{ info.repl.hosts[0] }}</td>
+  </tr>
+  <tr>
+    <td><strong>节点2</strong></td>
+    <td colspan="3">{{ info.repl.hosts[1] }}</td>
+  </tr>
+  <tr>
+    <td><strong>节点3</strong></td>
+    <td colspan="3">{{ info.repl.hosts[2] }}</td>
+  </tr>
 </table>
 </div>
 {% endif %}

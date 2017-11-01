@@ -26,8 +26,8 @@ module.exports = {
 
     //server: mongodb hostname or IP address
     //for replica set, use array of string instead
-    server: '192.168.99.100',
-    port:   31060,
+    server: ['10.0.0.66','10.0.0.244','10.0.0.22'],
+    port:   27017,
 
     //ssl: connect to the server using secure SSL
     ssl: process.env.ME_CONFIG_MONGODB_SSL || mongo.ssl,

@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mongodb-console-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mongodb-console
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        app: mongodb-console
+    spec:
+      containers:
+      - name: node
+        image: node:latest
+        ports:
+        - containerPort: 8081
+        command: ["sleep"]
+        args: ["100000"]
+        volumeMounts:
+        - mountPath: /poi/
+          name: mongodb-console-volume
+      volumes:
+      - name: mongodb-console-volume
+        hostPath:
+          # directory location on host
+          path: /Users/doublesheep/workspace/huawei-mongo-express/
