@@ -538,7 +538,7 @@
     <table id="indexes" class="table table-bordered table-striped">
       <tr>
         <th>名称</th>
-        <th>Columns</th>
+        <th>列名</th>
         <th>大小</th>
         <th>属性</th>
         <th>操作</th>
@@ -563,7 +563,7 @@
         </td>
       {% if !settings.read_only %}
         <td>
-          <a class="operation" href="{{ baseHref }}db/{{ dbName }}/dropIndex/{{ collectionName | url_encode }}?name={{ index.name }}">
+          <a class="operation" href="{{ baseHref }}db/{{ dbName }}/dropIndex/{{ collectionName | url_encode }}?name={{ index.name }}" style="justify-content: flex-start">
              删除
           </a>
         </td>
