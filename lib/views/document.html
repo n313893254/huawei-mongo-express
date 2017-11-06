@@ -91,18 +91,15 @@
   <div>
     {% if !settings.read_only %}
       <input type="hidden" name="_method" value="put">
-      <button onclick="return onBackClick()" class="backButton btn btn-warning btn-large">
-       <span class="glyphicon glyphicon-arrow-left"></span>
+      <button onclick="return onBackClick()" class="backButton btn btn-primary btn-large">
         返回
       </button>
 
-      <button type="submit" class="btn btn-success btn-large pull-right" onclick="return onSubmitClick()">
-        <span class="glyphicon glyphicon-pencil"></span>
+      <button type="submit" class="btn btn-primary btn-large pull-right" onclick="return onSubmitClick()">
         保存
       </button>
     {% else %}
-      <button onclick="return history.back()" class="btn btn-warning btn-large btn-block">
-       <span class="glyphicon glyphicon-arrow-left"></span>
+      <button onclick="return history.back()" class="btn btn-primary btn-large btn-block">
         返回
       </button>
     {% endif %}
@@ -114,7 +111,6 @@
   <form method="POST" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}/{{ document._id | json | safe | url_encode }}">
     <input type="hidden" name="_method" value="delete">
     <button type="submit" class="btn btn-danger">
-      <span class="glyphicon glyphicon-trash"></span>
       删除
     </button>
   </form>
