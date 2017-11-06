@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>poi</title>
-  </head>
-  <body>
-hello
-  </body>
-</html>
+{% extends 'layout.html' %}
+
+{% block title %}备份{% endblock %}
+
+  {% block styles %}
+    <link href="{{ baseHref }}public/css/codemirror.css" rel="stylesheet">
+    {% if editorTheme != "default" %}
+    <link href="{{ baseHref }}public/css/theme/{{ editorTheme }}.css" rel="stylesheet">
+    {% endif %}
+
+    <style type="text/css">
+      figure {
+        display: flex;
+        justify-content: center;
+      }
+      .article img {
+        width: 50vw;
+      }
+    </style>
+  {% endblock %}
+
+{% block content %}
+  <div class="article">
+  <h2 id="1-mongodb数据备份">1. MongoDB数据备份</h2>
+  <h4 id="1-如图，进入服务控制台确认集群主节点">1.  如图，进入服务控制台确认集群主节点</h4>
+  <figure data-type="image"><img src="http://upload-images.jianshu.io/upload_images/5134515-243e62b30dd222f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+  <h4 id="2-进入任一容器终端">2. 进入任一容器终端</h4>
+  <figure data-type="image"><img src="http://upload-images.jianshu.io/upload_images/5134515-3d333a0bacf26024.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+  <p>输入<code>mongodump -h nobby-prawn-replicaset-2-0.nobby-prawn-replicaset-headless -o back</code>，备份主节点的数据库到<code>/back</code>目录下</p>
+  <p>会得到下图结果</p>
+  <figure data-type="image"><img src="http://upload-images.jianshu.io/upload_images/5134515-586407d21d2490f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+  <p>进入到<code>/back</code>目录下可看到当前备份的各数据库目录，与控制台的信息一致</p>
+  <figure data-type="image"><img src="http://upload-images.jianshu.io/upload_images/5134515-7efa29fc708153fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+  <figure data-type="image"><img src="http://upload-images.jianshu.io/upload_images/5134515-e4ce64320bd772c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+  <h2 id="2-数据库恢复">2. 数据库恢复</h2>
+  <h4 id="1-在控制台中删掉asd数据库，同时确认主节点">1. 在控制台中删掉<code>asd</code>数据库，同时确认主节点</h4>
+  <figure data-type="image"><img src="http://upload-images.jianshu.io/upload_images/5134515-f1be253a27dff8f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+  <h4 id="2-输入mongorestore-h-nobby-prawn-replicaset-2-0-nobby-prawn-replicaset-headless-dir-back">2. 输入<code>mongorestore -h nobby-prawn-replicaset-2-0.nobby-prawn-replicaset-headless --dir back</code></h4>
+  <figure data-type="image"><img src="http://upload-images.jianshu.io/upload_images/5134515-cad684fc5a1e19fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+  <figure data-type="image"><img src="http://upload-images.jianshu.io/upload_images/5134515-deb3727df373f320.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></figure>
+  </div>
+{% endblock %}
