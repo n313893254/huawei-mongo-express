@@ -98,3 +98,16 @@
 .bold{
   font-weight:bold;
 }
+
+.operation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #409eff;
+  cursor: pointer;
+}
+
+.operation:hover {
+  color: #66b1ff;
+  text-decoration: none;
+}

@@ -40,7 +40,7 @@
   <tr>
     <td><a href="{{ baseHref }}db/{{ db }}/">{{ db }}</a></td>
     <td class="col-md-1">
-      <a href="{{ baseHref }}db/{{ db }}/" class="btn btn-success btn-block" >
+      <a href="{{ baseHref }}db/{{ db }}/" class="operation">
         查看
       </a>
     </td>
@@ -50,9 +50,9 @@
         <input type="hidden" name="_method" value="delete">
         <button type="submit" class="hidden"></button>
       </form>
-      <button class="btn btn-danger btn-block deleteButton" database-name="{{ db }}" childof="db-{{ db }}">
+      <div class="operation deleteButton" database-name="{{ db }}" childof="db-{{ db }}">
         删除
-      </button>
+      </div>
     </td>
     {% endif %}
   </tr>

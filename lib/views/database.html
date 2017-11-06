@@ -43,11 +43,11 @@
       <tr>
         <td><a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}">{{ c }}</a></td>
         <td class="col-md-1">
-          <a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}" class="btn btn-success btn-block">
+          <a href="{{ baseHref }}db/{{ dbName }}/{{ c | url_encode }}" class="operation">
             查看
           </a>
         </td>
-        <td class="col-md-1">
+        <!-- <td class="col-md-1">
           <a href="{{ baseHref }}db/{{ dbName }}/export/{{ c | url_encode }}" class="btn btn-warning btn-block">
             导出
           </a>
@@ -56,7 +56,7 @@
           <a href="{{ baseHref }}db/{{ dbName }}/expArr/{{ c | url_encode }}" class="btn btn-warning btn-block">
             导出[JSON]
           </a>
-        </td>
+        </td> -->
         {% if !settings.read_only %}
         <td class="col-md-1">
           <form method="POST"
@@ -67,9 +67,9 @@
             <input type="hidden" name="_method" value="delete">
             <button type="submit" class="hidden"></button>
           </form>
-          <button class="btn btn-danger btn-block deleteButton" collection-name="{{ c }}" childof="db-{{ dbName }}-{{ c }}">
+          <div class="operation deleteButton" collection-name="{{ c }}" childof="db-{{ dbName }}-{{ c }}">
             删除
-          </button>
+          </div>
         </td>
         {% endif %}
       </tr>
