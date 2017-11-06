@@ -74,22 +74,11 @@
 {% endblock %}
 
 {% block content %}
-  {% if !settings.read_only %}
-    <p>
-      <button type="button" data-toggle="modal" data-target="#addDocument" class="btn btn-success btn-large">
-        <span class="glyphicon glyphicon-pencil"></span>
-        创建文档
-      </button>
-      <button type="button" data-toggle="modal" data-target="#addIndex" class="btn btn-success btn-large">
-        <span class="glyphicon glyphicon-pencil"></span>
-        添加索引
-      </button>
-    </p>
-  {% endif %}
+
 
   <ul id="tabs" class="nav nav-pills nav-justified" data-tabs="tabs">
-    <li class="active"><a href="#simple" data-toggle="tab"><span class="glyphicon glyphicon-tag"></span>简单查询</a></li>
-    <li><a href="#advanced" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span>高级查询</a></li>
+    <li class="active"><a href="#simple" data-toggle="tab">简单查询</a></li>
+    <li><a href="#advanced" data-toggle="tab">高级查询</a></li>
   </ul>
   <div id="my-tab-content" class="tab-content">
     <div class="tab-pane active" id="simple">
@@ -115,7 +104,6 @@
         </div>
         <div class="form-group col-sm-6 col-md-2">
           <button type="submit" class="btn btn-primary btn-block">
-            <span class="glyphicon glyphicon-search"></span>
             查询
           </button>
         </div>
@@ -144,19 +132,7 @@
       </form>
     </div>
   </div>
-  {% if !settings.read_only && count > 0 %}
-  <p>
-    <form id="deleteListForm" method="POST" style="display:inline;" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}">
-      {# Router is smart enough to transform method=POST + _method=delete into actual HTTP DELETE, which is what we want #}
-      <input type="hidden" name="_method" value="delete">
-      <button type="button" data-toggle="modal" data-target="#deleteListModal" class="btn btn-danger btn-large btn-block">
-        <span class="glyphicon glyphicon-trash"></span>
-        删除 {{count}} documents retrieved
-      </button>
-    </form>
-  </p>
-  {% endif %}
-  <br/>
+
 
 <!-- Add Document Modal -->
   <div class="modal fade" id="addDocument" role="dialog" tabindex="-1">
@@ -319,10 +295,24 @@
 
   {% endif %}
 
+  <br/>
+  {% if !settings.read_only && count > 0 %}
+  <p>
+    <form id="deleteListForm" method="POST" style="display:inline;" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}">
+      {# Router is smart enough to transform method=POST + _method=delete into actual HTTP DELETE, which is what we want #}
+      <input type="hidden" name="_method" value="delete">
+      <button type="button" data-toggle="modal" data-target="#deleteListModal" class="btn btn-danger btn-large btn-block">
+        删除 {{count}} documents retrieved
+      </button>
+    </form>
+  </p>
+  {% endif %}
+  <br/>
+
   <div class="row">
     {% if !settings.read_only %}
       <div class="col-md-12">
-        <h2>重命名集合</h2>
+        <h2>集合操作</h2>
         <form method="POST" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}" class="well form-inline">
           <input type="hidden" name="_method" value="put">
           <div class="form-group">
@@ -330,8 +320,13 @@
             <input class="form-control" type="text" id="collection" name="collection" placeholder="{{ collectionName }}">
           </div>
           <button type="submit" class="btn btn-primary">
-            <span class="glyphicon glyphicon-pencil"></span>
             重命名
+          </button>
+          <button type="button" data-toggle="modal" data-target="#addDocument" class="btn btn-success btn-large">
+            创建文档
+          </button>
+          <button type="button" data-toggle="modal" data-target="#addIndex" class="btn btn-success btn-large">
+            添加索引
           </button>
         </form>
       </div>
@@ -343,7 +338,7 @@
     <div class="col-sm-6 {% if !settings.read_only %}col-lg-3{% endif %}">
       <div class="well">
       <a href="{{ baseHref }}db/{{ dbName }}/export/{{ collectionName | url_encode }}" class="btn btn-warning btn-block">
-        <span class="glyphicon glyphicon-floppy-save"></span><br>导出 标准格式
+        导出标准格式
       </a>
       </div>
     </div>
@@ -351,7 +346,7 @@
     <div class="col-sm-6 {% if !settings.read_only %}col-lg-3{% endif %}">
       <div class="well">
       <a href="{{ baseHref }}db/{{ dbName }}/expArr/{{ collectionName | url_encode }}" class="btn btn-warning btn-block">
-        <span class="glyphicon glyphicon-floppy-save"></span><br>导出 jsonArray格式
+        导出jsonArray格式
       </a>
       </div>
     </div>
@@ -359,7 +354,7 @@
     <div class="col-sm-6 {% if !settings.read_only %}col-lg-3{% endif %}">
       <div class="well">
       <a href="{{ baseHref }}db/{{ dbName }}/expCsv/{{ collectionName | url_encode }}" class="btn btn-warning btn-block">
-        <span class="glyphicon glyphicon-floppy-save"></span><br>导出 csv格式
+        导出csv格式
       </a>
       </div>
     </div>
@@ -367,7 +362,7 @@
     <div class="col-sm-6 {% if !settings.read_only %}col-lg-3{% endif %}">
       <div class="well">
       <a href="{{ baseHref }}db/{{ dbName }}/reIndex/{{ collectionName | url_encode }}" class="btn btn-warning btn-block">
-        <span class="glyphicon glyphicon-resize-small"></span><br>重新索引
+        重新索引
       </a>
       </div>
     </div>
@@ -376,7 +371,7 @@
       <div class="col-sm-6 col-lg-3">
         <div class="well">
           <a href="{{ baseHref }}db/{{ dbName }}/compact/{{ collectionName | url_encode }}" class="btn btn-danger btn-block">
-            <span class="glyphicon glyphicon-resize-small"></span><br>压缩
+            压缩
           </a>
         </div>
       </div>
@@ -385,7 +380,7 @@
           <input type="hidden" name="_method" value="delete">
           <input type="submit" class="hidden" />
           <button class="btn btn-danger deleteButtonCollection btn-block" collection-name="{{ collectionName }}" childof="db-{{ dbName }}-{{ collectionName }}">
-            <span class="glyphicon glyphicon-trash"></span><br>删除
+            删除
           </button>
         </form>
 
@@ -547,8 +542,8 @@
         </td>
       {% if !settings.read_only %}
         <td>
-          <a class="btn btn-danger" href="{{ baseHref }}db/{{ dbName }}/dropIndex/{{ collectionName | url_encode }}?name={{ index.name }}">
-            <span class="glyphicon glyphicon-trash"></span> &nbsp;删除
+          <a class="operation" href="{{ baseHref }}db/{{ dbName }}/dropIndex/{{ collectionName | url_encode }}?name={{ index.name }}">
+             删除
           </a>
         </td>
       {% else %}
