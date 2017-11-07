@@ -118,19 +118,19 @@
       </form>
     </div>
     <div class="tab-pane" id="advanced">
-      <form class="well" method="get" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}">
+      <form class="well" method="get" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}" style="height: 100px">
         {% for column in columns %}
           <input type="checkbox" name="sort[{{column}}]" class="hide sort-{{column}}" {% if sort[column] %}value="{{sort[column]}}" checked="checked"{% endif %}/>
         {% endfor %}
         <div class="row">
           <div class="form-group col-sm-6 col-md-5">
-            <textarea class="input-medium form-control" style="width: 100%; height: 150px" id="query" name="query" placeholder="查询" title="Query">{{ query }}</textarea>
+            <textarea class="input-medium form-control" style="width: 100%;" id="query" name="query" placeholder="请输入JSON文本" title="Query">{{ query }}</textarea>
           </div>
           <div class="form-group col-sm-6 col-md-5">
-            <textarea class="input-medium form-control" style="width: 100%; height: 150px" id="projection" name="projection" placeholder="Projection" title="Projection">{{ projection }}</textarea>
+            <textarea class="input-medium form-control" style="width: 100%;" id="projection" name="projection" placeholder="Projection" title="Projection">{{ projection }}</textarea>
           </div>
-          <div class="form-group col-md-2">
-            <button style="height:150px;" type="submit" class="btn btn-primary btn-block">
+          <div class="col-md-2">
+            <button style="" type="submit" class="btn btn-primary btn-block">
             查询
             </button>
           </div>

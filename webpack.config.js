@@ -23,6 +23,7 @@ const bootstrapPath = resolveModulePath('bootstrap');
 module.exports = {
   entry: {
     index: './lib/scripts/index.js',
+    poi: './lib/scripts/poi.js',
     database: './lib/scripts/database.js',
     collection: './lib/scripts/collection.js',
     document: './lib/scripts/document.js',
