@@ -46,10 +46,10 @@
     {% if !settings.read_only %}
     <td class="col-md-1">
       <form method="POST" id="db-{{ db }}" action="{{ baseHref }}{{ db }}" style="margin: 0px;">
-        <input type="hidden" name="_method" value="delete">
-        <button type="submit" class="hidden"></button>
+        <input type="hidden" name="_method" value="delete" hidden>
+        <button type="submit" class="hidden" hidden></button>
       </form>
-      <div class="operation deleteButton" database-name="{{ db }}" childof="db-{{ db }}">
+      <div class="deleteButton operation" database-name="{{ db }}" childof="db-{{ db }}">
         删除
       </div>
     </td>
