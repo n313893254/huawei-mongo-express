@@ -15,77 +15,80 @@
 
 
 {% block content %}
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div style="display: inline-block;">
-      <h4 style="font-weight: bold;">数据库</h4>
-    </div>
-    {% if !settings.read_only %}
-    <form class="form-inline" method="POST" style="float:right;">
-      <div class="input-group">
-        <input class="form-control" type="text" id="database" name="database" placeholder="数据库名" title="数据库名">
-        <span class="input-group-btn">
-      <button type="submit" class="btn btn-primary pull-right">
-        创建数据库
-      </button>
-        </span>
+  <div class="" style="width: 30vw; display: inline-block;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div style="display: inline-block;">
+        <h4 style="font-weight: bold;">数据库</h4>
       </div>
-    </form>
-    {% endif %}
-    </div>
-  <div class="panel-body no-padding">
-<table class="table table-bordered table-striped table-condensed no-margin">
-  {% for db in databases %}
-  <tr>
-    <td><a href="{{ baseHref }}db/{{ db }}/">{{ db }}</a></td>
-    <td class="col-md-1">
-      <a href="{{ baseHref }}db/{{ db }}/" class="operation">
-        查看
-      </a>
-    </td>
-    {% if !settings.read_only %}
-    <td class="col-md-1">
-      <form method="POST" id="db-{{ db }}" action="{{ baseHref }}{{ db }}" style="margin: 0px;">
-        <input type="hidden" name="_method" value="delete">
-        <button type="submit" class="hidden"></button>
+      {% if !settings.read_only %}
+      <form class="form-inline" method="POST" style="float:right;">
+        <div class="input-group">
+          <input class="form-control" type="text" id="database" name="database" placeholder="数据库名" title="数据库名">
+          <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary pull-right">
+          创建数据库
+        </button>
+          </span>
+        </div>
       </form>
-      <div class="operation deleteButton" database-name="{{ db }}" childof="db-{{ db }}">
-        删除
-      </div>
-    </td>
-    {% endif %}
-  </tr>
-  {% endfor %}
-</table>
-</div>
+      {% endif %}
+    </div>
+    <div class="panel-body no-padding">
+  <table class="table table-bordered table-striped table-condensed no-margin">
+    {% for db in databases %}
+    <tr>
+      <td><a href="{{ baseHref }}db/{{ db }}/">{{ db }}</a></td>
+      <td class="col-md-1">
+        <a href="{{ baseHref }}db/{{ db }}/" class="operation">
+          查看
+        </a>
+      </td>
+      {% if !settings.read_only %}
+      <td class="col-md-1">
+        <form method="POST" id="db-{{ db }}" action="{{ baseHref }}{{ db }}" style="margin: 0px;">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="hidden"></button>
+        </form>
+        <div class="operation deleteButton" database-name="{{ db }}" childof="db-{{ db }}">
+          删除
+        </div>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
   </div>
-{% if !settings.read_only %}
-<div id="confirm-deletion" class="modal fade" role="dialog" aria-labelledby="confirmDeletionLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    </div>
+  {% if !settings.read_only %}
+  <div id="confirm-deletion" class="modal fade" role="dialog" aria-labelledby="confirmDeletionLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">删除数据库</h4>
-      </div>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">删除数据库</h4>
+        </div>
 
-      <div class="modal-body">
-        <p>
-          注意！你将要删除整个 <strong><span id="modal-database-name"></span></strong> 数据库.
-        </p>
-        <p>
-          <label for="confirmation-input">请输入你要删除数据库的名称.</label>
-          <input type="text" id="confirmation-input" name="confirmation-input" shouldbe="" value="" />
-        </p>
-      </div>
+        <div class="modal-body">
+          <p>
+            注意！你将要删除整个 <strong><span id="modal-database-name"></span></strong> 数据库.
+          </p>
+          <p>
+            <label for="confirmation-input">请输入你要删除数据库的名称.</label>
+            <input type="text" id="confirmation-input" name="confirmation-input" shouldbe="" value="" />
+          </p>
+        </div>
 
-      <div class="modal-footer">
-        <button type="button" data-dismiss="modal" class="btn" id="delete">删除</button>
-        <button type="button" data-dismiss="modal" class="btn btn-primary">取消</button>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn" id="delete">删除</button>
+          <button type="button" data-dismiss="modal" class="btn btn-primary">取消</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  </div>
+
 
 <!--h2>Create Database</h2>
 <form class="well form-inline" method="POST">
@@ -107,9 +110,10 @@
 </p>
 
 {% else %}
+<div class=""  style="width: 35vw; display: inline-block; margin-left: 2vw;">
 <div class="panel panel-default stats">
   <div class="panel-heading">
-    <h4 style="font-weight: bold;">服务状态</h4>
+    <h4 style="font-weight: bold;">基本信息</h4>
   </div>
 <table class="table table-bordered table-striped">
   <tr>
@@ -124,7 +128,6 @@
     <td><strong>服务时间</strong></td>
     <td>{{ info.localTime|date('r') }}</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
   <tr>
     <td><strong>当前连接数</strong></td>
     <td>{{ info.connections.current }}</td>
@@ -149,7 +152,6 @@
     <td><strong>写锁死队列</strong></td>
     <td>{{ info.globalLock.currentQueue.writers}}</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
   <tr>
     <td><strong>Disk Flushes</strong></td>
     <td>{{ info.backgroundFlushing.flushes }}</td>
@@ -162,7 +164,6 @@
     <td><strong>Average Flush Time</strong></td>
     <td>{{ info.backgroundFlushing.average_ms }} ms</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
   <tr>
     <td><strong>插入总数</strong></td>
     <td>{{ info.opcounters.insert }}</td>
@@ -176,11 +177,12 @@
     <td>{{ info.opcounters.delete}}</td>
   </tr>
   <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="4" style="font-weight: bold; font-size: 20px;">连接信息&nbsp;</td></tr>
   <tr>
-    <td><strong>集群名</strong></td>
-    <td>{{ info.repl.setName }}</td>
-    <td><strong>主节点</strong></td>
-    <td>{{ info.repl.primary }}</td>
+    <td class="span2"><strong>集群名</strong></td>
+    <td class="span3">{{ info.repl.setName }}</td>
+    <td class="span2"><strong>主节点</strong></td>
+    <td class="span3">{{ info.repl.primary }}</td>
   </tr>
   <tr>
     <td><strong>节点1</strong></td>
@@ -196,6 +198,11 @@
   </tr>
 </table>
 </div>
+</div>
+
+
+</div>
+
 {% endif %}
 
 {#
