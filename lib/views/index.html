@@ -4,18 +4,18 @@
 
 {% block breadcrumb %}
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">数据库<span class="caret"></span></a>
-    <ul class="dropdown-menu">
+    <a href="/" role="button" aria-haspopup="true" aria-expanded="false">基本信息</a>
+    {# <ul class="dropdown-menu">
       {% for db in databases %}
       <li><a href="{{ baseHref }}db/{{ db }}/">{{ db }}</a></li>
       {% endfor %}
-    </ul>
+    </ul> #}
   </li>
 {% endblock %}
 
 
 {% block content %}
-  <div class="" style="width: 30vw; display: inline-block;">
+  <div class="" style="width: 35vw; display: inline-block;">
   <div class="panel panel-default">
     <div class="panel-heading">
       <div style="display: inline-block;">
@@ -24,7 +24,7 @@
       {% if !settings.read_only %}
       <form class="form-inline" method="POST" style="float:right;">
         <div class="input-group">
-          <input class="form-control" type="text" id="database" name="database" placeholder="数据库名" title="数据库名">
+          <input class="form-control" type="text" id="database" name="database" placeholder="数据库名" title="">
           <span class="input-group-btn">
         <button type="submit" class="btn btn-primary pull-right">
           创建数据库

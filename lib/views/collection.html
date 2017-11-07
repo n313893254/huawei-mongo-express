@@ -47,6 +47,12 @@
 
 {% block breadcrumb %}
   <li>
+    <a href="/">基本信息</a>
+  </li>
+  <li>
+    <a href="/"><span class="glyphicon glyphicon-chevron-right"></span></a>
+  </li>
+  <li>
     <a href="{{ baseHref }}db/{{ dbName}}">数据库:</a>
   </li>
   <li class="dropdown">
@@ -208,19 +214,19 @@
   {% if pagination %}
     <ul class="pager span7">
       <li class="previous{% if prev.skip < 0 %} disabled{% endif %}">
-        <a{% if prev.skip >= 0 %} href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?skip=0&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}{% for k, v in sort %}&sort[{{ k }}]={{ v }}{% endfor %}"{% endif %}>&larr; First</a>
+      <a{% if prev.skip >= 0 %} href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?skip=0&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}{% for k, v in sort %}&sort[{{ k }}]={{ v }}{% endfor %}"{% endif %}>&larr; 第一页</a>
       </li>
 
       <li{% if prev.skip < 0 %} class="disabled"{% endif %}>
-        <a{% if prev.skip >= 0 %} href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?skip={{ prev.skip }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}{% for k, v in sort %}&sort[{{ k }}]={{ v }}{% endfor %}"{% endif %}>&larr; Prev</a>
+      <a{% if prev.skip >= 0 %} href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?skip={{ prev.skip }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}{% for k, v in sort %}&sort[{{ k }}]={{ v }}{% endfor %}"{% endif %}>&larr; 前一页</a>
       </li>
 
       <li{% if next.skip >= stats.count %} class="disabled"{% endif %}>
-        <a{% if next.skip < stats.count %} href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?skip={{ next.skip }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}{% for k, v in sort %}&sort[{{ k }}]={{ v }}{% endfor %}"{% endif %}>Next &rarr;</a>
+      <a{% if next.skip < stats.count %} href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?skip={{ next.skip }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}{% for k, v in sort %}&sort[{{ k }}]={{ v }}{% endfor %}"{% endif %}>下一页 &rarr;</a>
       </li>
 
       <li class="next{% if next.skip >= stats.count %} disabled{% endif %}">
-        <a{% if next.skip < stats.count %} href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?skip={{ last }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}{% for k, v in sort %}&sort[{{ k }}]={{ v }}{% endfor %}"{% endif %}>Last &rarr;</a>
+      <a{% if next.skip < stats.count %} href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}?skip={{ last }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection={{ projection }}{% for k, v in sort %}&sort[{{ k }}]={{ v }}{% endfor %}"{% endif %}>最后一页 &rarr;</a>
       </li>
     </ul>
   {% endif %}
@@ -243,7 +249,7 @@
       {% for document in docs %}
         <tr onclick="loadDocument('{{ document._id | json | safe | url_encode }}')">
           {% for column in columns %}
-            <td><div class="tableContent">
+            <td><div class="tableContent" style="">
             {{ document[column] | stringDocIDs | to_display | safe }}
             {% if !settings.read_only && column === '_id' && collectionName !== 'system.indexes' %}
               <form class="deleteButtonDocument" method="POST" style="display:inline;" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}/{{ document._id | json | safe | url_encode }}?skip={{ skip }}&key={{ key }}&value={{ value }}&type={{ type }}&query={{ query }}&projection= {{ projection }}">
